@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.buildwebsites.co.in/wp-content/uploads/2022/09/eCommerce-Website-Components-photo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+        #search-bar {
+            padding: 10px;
+            width: 300px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+        }
+        #search-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #results {
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="search-bar">
+        <input type="text" id="product-name" placeholder="Enter product name">
+        <button id="search-btn" onclick="searchProduct()">Search</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        function searchProduct() {
+            var productName = document.getElementById("product-name").value;
+            var resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+
+            // Array of online shopping websites to search the product
+            var websites = [
+                "https://www.amazon.com/s?k=" + productName,
+                "https://www.ebay.com/sch/i.html?_nkw=" + productName,
+                "https://www.bestbuy.com/site/searchpage.jsp?st=" + productName,
+                "https://www.walmart.com/search/?query=" + productName,
+                "https://www.target.com/s?searchTerm=" + productName,
+                "https://www.myntra.com/" + productName,
+                "https://meesho.com/search/" + productName
+            ];
+
+            // Display links to the search results for each website
+            websites.forEach(function(website) {
+                var link = document.createElement("a");
+                link.href = website;
+                link.textContent = website;
+                link.target = "_blank";
+                resultsDiv.appendChild(link);
+                resultsDiv.appendChild(document.createElement("br"));
+            });
+        }
+    </script>
+</body>
+</html>
